@@ -1,0 +1,25 @@
+position_controller:
+  base_leg_fl: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  hip_leg_fl: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  leg_fl_up_down: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  base_leg_fr: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  hip_leg_fr: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  leg_fr_up_down: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  base_leg_bl: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  hip_leg_bl: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  leg_bl_up_down: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  base_leg_br: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  hip_leg_br: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}
+  leg_br_up_down: 
+    pid: {p: 4000, i: 10, d: 1000, i_clamp_min:  -5000, i_clamp_max: 5000}

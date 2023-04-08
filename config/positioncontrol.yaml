@@ -1,0 +1,17 @@
+type: "effort_controllers/JointGroupPositionController"
+joints:
+  - base_leg_fl
+  - hip_leg_fl
+  - leg_fl_up_down
+  - base_leg_fr
+  - hip_leg_fr
+  - leg_fr_up_down
+  - base_leg_bl
+  - hip_leg_bl
+  - leg_bl_up_down
+  - base_leg_br
+  - hip_leg_br
+  - leg_br_up_down
+ 
+      
+
