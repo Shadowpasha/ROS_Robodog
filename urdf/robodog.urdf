@@ -9,17 +9,18 @@
     <color rgba="0.0 0.0 0.7 1.0"/>
 </material>
 
+
 <link name="base_link">
 
     <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
-        <box size="0.4 0.25 0.10"/>
+        <box size="0.4 0.25 0.05"/>
         </geometry>
     </collision>
 
     <visual>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
         <box size="0.4 0.25 0.05"/>
         </geometry>
@@ -40,14 +41,14 @@
 <link name="lidar_link">
 
     <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
         <cylinder radius="0.03" length="0.03"/>
         </geometry>
     </collision>
 
     <visual>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
          <cylinder radius="0.03" length="0.03"/>
         </geometry>
@@ -55,7 +56,7 @@
     </visual>
 
     <inertial>
-        <mass value="0.5"/>
+        <mass value="0.1"/>
         <inertia
             ixx="1.0" ixy="0.0" ixz="0.0"
             iyy="1.0" iyz="0.0"
@@ -65,23 +66,65 @@
 </link>
 
 <joint name="lidar_base" type="fixed">
-    <origin xyz="0.14 0.0 0.04" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.14 0.0 0.055" rpy="0.0 0.0 3.14"/>
     <parent link="base_link"/>
     <child link="lidar_link"/>
 </joint>
 
 
-<link name="imu_link">
+<link name="kinect_link">
 
     <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
-        <cylinder radius="0.01" length="0.01"/>
+            <box size="0.00 0.00 0.00"/>
         </geometry>
     </collision>
 
     <visual>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+            <box size="0.02 0.08 0.02"/>
+        </geometry>
+        <material name="Blue"/>
+    </visual>
+
+    <inertial>
+        <mass value="0.1"/>
+        <inertia
+            ixx="1.0" ixy="0.0" ixz="0.0"
+            iyy="1.0" iyz="0.0"
+            izz="1.0"/>
+    </inertial>
+
+</link>
+
+<joint name="kinect_base" type="fixed">
+    <origin xyz="0.20 0.0 0.01" rpy="0.0 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="kinect_link"/>
+</joint>
+
+<joint name="kinect_camera" type="fixed">
+    <origin xyz="0.00 0.0 0.000" rpy="-1.57 0.0 -1.57"/>
+    <parent link="kinect_link"/>
+    <child link="camera_link"/>
+</joint>
+
+<link name="camera_link"> </link>
+
+
+<link name="imu_link">
+
+    <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+        <cylinder radius="0.2" length="0.01"/>
+        </geometry>
+    </collision>
+
+    <visual>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
          <cylinder radius="0.01" length="0.01"/>
         </geometry>
@@ -99,14 +142,14 @@
 </link>
 
 <joint name="imu_base" type="fixed">
-    <origin xyz="0.0 0.0 0.00" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
 </joint>
 
 <!-- Front Left Leg-->
 <joint name="base_leg_fl" type="revolute">
-    <origin xyz="0.13 0.13 0.245" rpy="0.0 1.57 0.0"/>
+    <origin xyz="0.13 0.13 -0.005" rpy="0.0 1.57 0.0"/>
     <parent link="base_link"/>
     <child link="robo_leg_fl_hip"/>
     <axis xyz="0.0 0.0 1.0"/>
@@ -243,7 +286,7 @@
 
 <!-- Front Right Leg-->
 <joint name="base_leg_fr" type="revolute">
-    <origin xyz="0.13 -0.13 0.245" rpy="0.0 1.57 0.0"/>
+    <origin xyz="0.13 -0.13 -0.005" rpy="0.0 1.57 0.0"/>
     <parent link="base_link"/>
     <child link="robo_leg_fr_hip"/>
     <axis xyz="0.0 0.0 -1.0"/>
@@ -377,7 +420,7 @@
 
 <!-- Back Left Leg-->
 <joint name="base_leg_bl" type="revolute">
-    <origin xyz="-0.13 0.13 0.245" rpy="0.0 1.57 0.0"/>
+    <origin xyz="-0.13 0.13 -0.005" rpy="0.0 1.57 0.0"/>
     <parent link="base_link"/>
     <child link="robo_leg_bl_hip"/>
     <axis xyz="0.0 0.0 1.0"/>
@@ -511,7 +554,7 @@
 
 <!-- Back Right Leg-->
 <joint name="base_leg_br" type="revolute">
-    <origin xyz="-0.13 -0.13 0.245" rpy="0.0 1.57 0.0"/>
+    <origin xyz="-0.13 -0.13 -0.005" rpy="0.0 1.57 0.0"/>
     <parent link="base_link"/>
     <child link="robo_leg_br_hip"/>
     <axis xyz="0.0 0.0 -1.0"/>
@@ -777,43 +820,43 @@
 </transmission>
 
 <gazebo reference="leg_fl_down_sphere">
-    <mu1>0.99</mu1>
+    <mu1>1.0</mu1>
     <mu2>1.0</mu2>
     <minDepth>0.0002</minDepth>
-    <kp  value="1000000.0"/>
+    <kp  value="10000000.0"/>
     <kd  value="100.0"/>
   </gazebo>
 
   <!-- FL4 friction -->
   <gazebo reference="leg_fr_down_sphere">
-    <mu1>0.99</mu1>
+    <mu1>1.0</mu1>
     <mu2>1.0</mu2>
     <minDepth>0.0002</minDepth>
-    <kp  value="1000000.0"/>
+    <kp  value="10000000.0"/>
     <kd  value="100.0"/>
   </gazebo>
 
   <!-- RR4 friction -->
   <gazebo reference="leg_bl_down_sphere">
-    <mu1>0.99</mu1>
+    <mu1>1.0</mu1>
     <mu2>1.0</mu2>
     <minDepth>0.0002</minDepth>
-    <kp  value="1000000.0"/>
+    <kp  value="10000000.0"/>
     <kd  value="100.0"/>
   </gazebo>
 
   <!-- RL4 friction -->
   <gazebo reference="leg_br_down_sphere">
-    <mu1>0.99</mu1>
+    <mu1>1.0</mu1>
     <mu2>1.0</mu2>
     <minDepth>0.0002</minDepth>
-    <kp  value="1000000.0"/>
+    <kp  value="100000000.0"/>
     <kd  value="100.0"/>
   </gazebo>
 
 
  <gazebo reference="lidar_link">
-    <sensor type="gpu_ray" name="head_hokuyo_sensor">
+    <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
       <update_rate>20</update_rate>
@@ -822,8 +865,8 @@
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-1.570796</min_angle>
-            <max_angle>1.570796</max_angle>
+            <min_angle>-0.72796</min_angle>
+            <max_angle>0.72796</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -834,15 +877,42 @@
         <noise>
           <type>gaussian</type>
           <mean>0.0</mean>
-          <stddev>0.01</stddev>
+          <stddev>0.0</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-        <topicName>/laser/scan</topicName>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
         <frameName>lidar_link</frameName>
       </plugin>
     </sensor>
   </gazebo>
+
+  <gazebo reference="kinect_link">
+  <sensor name="kinect_camera" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <horizontal_fov>1.0898</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>10.0</far>
+      </clip>
+    </camera>
+    <plugin name="kinect_controller" filename="libgazebo_ros_openni_kinect.so">
+      <cameraName>kinect</cameraName>
+      <imageTopicName>/kinect/color/image_raw</imageTopicName>
+      <cameraInfoTopicName>/kinect/color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
+      <frameName>camera_link</frameName>
+    </plugin>
+  </sensor>
+</gazebo>
 
    <gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">

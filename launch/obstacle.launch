@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg="obstacle_detector" type="obstacle_extractor_node" name="obstacle_extractor" output="screen">
+    <param name="use_scan" value="true"/>
+    <param name="use_pcl" value="false"/>
+    <param name="frame_id" value="map"/>
+  </node> 
+
+<node type="rviz" name="obs_rviz" pkg="rviz" args="-d $(find robodog)/rviz/obstacle.rviz" />
+
+
+</launch>
